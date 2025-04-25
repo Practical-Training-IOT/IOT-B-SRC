@@ -1,0 +1,5 @@
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 08:30:14.170	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/router.go:60	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 08:30:14.175	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/plugin.go:10	项目暂未初始化，无法安装插件，初始化后重启项目即可完成插件安装
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 08:30:14.175	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/router.go:109	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 08:30:14.175	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/core/server.go:38	server run success on 	{"address": ":8888"}
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 08:30:27.387	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/api/v1/system/sys_initdb.go:57	前往初始化数据库
