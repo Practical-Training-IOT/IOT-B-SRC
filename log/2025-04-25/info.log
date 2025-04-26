@@ -3,3 +3,11 @@
 [github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 08:30:14.175	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/router.go:109	router register success
 [github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 08:30:14.175	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/core/server.go:38	server run success on 	{"address": ":8888"}
 [github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 08:30:27.387	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/api/v1/system/sys_initdb.go:57	前往初始化数据库
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 10:07:44.087	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/gorm.go:77	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 10:07:44.216	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/router.go:60	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 10:07:45.599	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/router.go:109	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 10:07:45.600	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/core/server.go:38	server run success on 	{"address": ":8888"}
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 10:38:31.416	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/gorm.go:77	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 10:38:31.586	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/router.go:60	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 10:38:33.500	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/initialize/router.go:109	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-04-25 10:38:33.501	[34minfo[0m	D:/gowork/src/iot-b/IOT-B-SRC/core/server.go:38	server run success on 	{"address": ":8888"}
