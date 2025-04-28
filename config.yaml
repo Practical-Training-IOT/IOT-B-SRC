@@ -6,8 +6,8 @@ aliyun-oss:
     bucket-url: yourBucketUrl
     base-path: yourBasePath
 autocode:
-    web: IOT-B-WEB
-    root: D:\gowork\src\iot-b
+    web: IOT-B-WEB\src
+    root: D:\gowork\src\
     server: IOT-B-SRC
     module: github.com/flipped-aurora/gin-vue-admin/server
     ai-path: ""
