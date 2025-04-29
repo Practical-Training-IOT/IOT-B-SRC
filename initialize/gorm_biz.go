@@ -6,12 +6,13 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/model/alertRulePkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/productPkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/resources_iot"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/rules"
 )
 
 func bizModel() error {
 	db := global.GVA_DB
-	err := db.AutoMigrate(productPkg.Products{}, resources_iot.Resources{})
-	err = db.AutoMigrate(alertRulePkg.AlertRules{}, alertRecordPkg.Alerts{})
+	err := db.AutoMigrate(productPkg.Products{}, resources_iot.Resources{}, rules.RuleInfo{})
+	err = db.AutoMigrate(alertRulePkg.AlertRules{}, alertRecordPkg.Alerts{}, rules.RuleInfo{})
 	if err != nil {
 		return err
 	}

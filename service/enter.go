@@ -8,6 +8,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/service/productPkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/service/resources"
 	"github.com/flipped-aurora/gin-vue-admin/server/service/resources_iot"
+	"github.com/flipped-aurora/gin-vue-admin/server/service/rules"
 	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
 )
 
@@ -22,4 +23,5 @@ type ServiceGroup struct {
 	AlertRecordPkgServiceGroup alertRecordPkg.ServiceGroup
 	AlterLevelPkgServiceGroup  alterLevelPkg.ServiceGroup
 	AlertRulePkgServiceGroup   alertRulePkg.ServiceGroup
+	RulesServiceGroup          rules.ServiceGroup
 }

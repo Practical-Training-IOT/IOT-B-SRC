@@ -8,6 +8,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/productPkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/resources"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/resources_iot"
+	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/rules"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/system"
 )
 
@@ -22,4 +23,5 @@ type ApiGroup struct {
 	AlertRecordPkgApiGroup alertRecordPkg.ApiGroup
 	AlterLevelPkgApiGroup  alterLevelPkg.ApiGroup
 	AlertRulePkgApiGroup   alertRulePkg.ApiGroup
+	RulesApiGroup          rules.ApiGroup
 }
