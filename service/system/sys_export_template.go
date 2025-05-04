@@ -102,9 +102,6 @@ func (sysExportTemplateService *SysExportTemplateService) GetSysExportTemplateIn
 	if info.StartCreatedAt != nil && info.EndCreatedAt != nil {
 		db = db.Where("created_at BETWEEN ? AND ?", info.StartCreatedAt, info.EndCreatedAt)
 	}
-	if info.Name != "" {
-		db = db.Where("name LIKE ?", "%"+info.Name+"%")
-	}
 	if info.TableName != "" {
 		db = db.Where("table_name = ?", info.TableName)
 	}
