@@ -1495,9 +1495,6 @@ definitions:
       title:
         description: 菜单名
         type: string
-      transitionType:
-        description: 路由切换动画
-        type: string
     type: object
   system.SysApi:
     properties:
@@ -1932,7 +1929,7 @@ info:
   contact: {}
   description: 使用gin+vue进行极速开发的全栈开发基础平台
   title: Gin-Vue-Admin Swagger API接口文档
-  version: v2.8.1
+  version: v2.7.9-beta
 paths:
   /api/createApi:
     post:
@@ -2938,7 +2935,8 @@ paths:
             - $ref: '#/definitions/response.Response'
             - properties:
                 data:
-                  items: {}
+                  items:
+                    type: object
                   type: array
                 msg:
                   type: string
@@ -4527,6 +4525,18 @@ paths:
       summary: 更新SysDictionaryDetail
       tags:
       - SysDictionaryDetail
+  /sysExportTemplate/ExportTemplate:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: 导出表格模板
+      tags:
+      - SysExportTemplate
   /sysExportTemplate/createSysExportTemplate:
     post:
       consumes:
@@ -4608,42 +4618,6 @@ paths:
       summary: 导出表格
       tags:
       - SysExportTemplate
-  /sysExportTemplate/exportExcelByToken:
-    get:
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      responses: {}
-      security:
-      - ApiKeyAuth: []
-      summary: 导出表格
-      tags:
-      - ExportExcelByToken
-  /sysExportTemplate/exportTemplate:
-    get:
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      responses: {}
-      security:
-      - ApiKeyAuth: []
-      summary: 导出表格模板
-      tags:
-      - SysExportTemplate
-  /sysExportTemplate/exportTemplateByToken:
-    get:
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      responses: {}
-      security:
-      - ApiKeyAuth: []
-      summary: 通过token导出表格模板
-      tags:
-      - ExportTemplateByToken
   /sysExportTemplate/findSysExportTemplate:
     get:
       consumes:
