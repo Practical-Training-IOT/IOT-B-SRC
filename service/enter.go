@@ -14,13 +14,11 @@ import (
 var ServiceGroupApp = new(ServiceGroup)
 
 type ServiceGroup struct {
-	SystemServiceGroup        system.ServiceGroup
-	ExampleServiceGroup       example.ServiceGroup
-	ProductPkgServiceGroup    productPkg.ServiceGroup
-	ResourcesServiceGroup     resources.ServiceGroup
-	Resources_iotServiceGroup resources_iot.ServiceGroup
 	SystemServiceGroup         system.ServiceGroup
 	ExampleServiceGroup        example.ServiceGroup
+	ProductPkgServiceGroup     productPkg.ServiceGroup
+	ResourcesServiceGroup      resources.ServiceGroup
+	Resources_iotServiceGroup  resources_iot.ServiceGroup
 	AlertRecordPkgServiceGroup alertRecordPkg.ServiceGroup
 	AlterLevelPkgServiceGroup  alterLevelPkg.ServiceGroup
 	AlertRulePkgServiceGroup   alertRulePkg.ServiceGroup
