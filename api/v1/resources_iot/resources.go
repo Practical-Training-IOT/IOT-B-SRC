@@ -224,3 +224,13 @@ func (resourcesApi *ResourcesApi) GetResourcesCheck(c *gin.Context) {
 	}
 	response.OkWithDetailed(nil, "验证成功", c)
 }
+
+func (resourcesApi *ResourcesApi) GetResources(c *gin.Context) {
+	value := c.Query("name")
+	list, err := resourcesService.GetResourcesList(value)
+	if err != nil {
+		response.FailWithMessage("查询失败:"+err.Error(), c)
+		return
+	}
+	response.OkWithDetailed(list, "查询成功", c)
+}

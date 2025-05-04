@@ -155,11 +155,12 @@ func (resourcesService *ResourcesService) GetResourcesInfoList(ctx context.Conte
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
 	// 创建db
-	db := global.GVA_DB.Model(&resources_iot.Resources{})
+	fmt.Println(info)
+	db := global.GVA_DB.Model(&resources_iot.Resources{}).Where("protocol_type=?", info.Name)
 	var resourcess []resources_iot.Resources
 	// 如果有条件搜索 下方会自动创建搜索语句
 	if info.StartCreatedAt != nil && info.EndCreatedAt != nil {
-		db = db.Where("created_at BETWEEN ? AND ?", info.StartCreatedAt, info.EndCreatedAt).Where("protocol_type=?", info.Name)
+		db = db.Where("created_at BETWEEN ? AND ?", info.StartCreatedAt, info.EndCreatedAt)
 	}
 
 	err = db.Count(&total).Error
@@ -415,4 +416,13 @@ func validateMQTT(config response.MQTTConfigResponse) error {
 		config.InstanceName, config.BrokerAddress, config.MQTTTopic, config.MQTTClient)
 
 	return nil
+}
+
+func (resourcesService *ResourcesService) GetResourcesList(name string) ([]resources_iot.Resources, error) {
+	var resources []resources_iot.Resources
+	err := global.GVA_DB.Where("protocol_type=?", name).Find(&resources).Error
+	if err != nil {
+		return nil, err
+	}
+	return resources, err
 }

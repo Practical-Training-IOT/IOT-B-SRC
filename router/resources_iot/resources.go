@@ -25,5 +25,6 @@ func (s *ResourcesRouter) InitResourcesRouter(Router *gin.RouterGroup, PublicRou
 	{
 		resourcesRouterWithoutAuth.GET("getResourcesPublic", resourcesApi.GetResourcesPublic) // resources表开放接口
 		resourcesRouterWithoutAuth.POST("getResourcesCheck", resourcesApi.GetResourcesCheck)  // resources表开放接口
+		resourcesRouterWithoutAuth.GET("getResources", resourcesApi.GetResources)             // resources表开放接口
 	}
 }
