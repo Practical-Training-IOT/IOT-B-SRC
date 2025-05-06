@@ -3,6 +3,7 @@ package productPkg
 
 import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"time"
 )
 
 // products表 结构体  Products
@@ -25,4 +26,18 @@ type Products struct {
 // TableName products表 Products自定义表名 products
 func (Products) TableName() string {
 	return "products"
+}
+
+// Category 表示一个标准品类
+type Category struct {
+	ID           string    `gorm:"column:id;type:varchar(20);primary_key;not_null"`
+	CategoryName string    `gorm:"column:category_name;type:varchar(100);not_null"`
+	CategoryKey  string    `gorm:"column:category_key;type:varchar(50);not_null"`
+	Scene        string    `gorm:"column:scene;type:varchar(50);not_null"`
+	CreatedAt    time.Time `gorm:"column:created_at;type:timestamp"`
+}
+
+// 如果需要自定义表名，可以实现 gorm.Model 接口的方法 TableName
+func (Category) TableName() string {
+	return "categories" // 假设你的表名为 categories
 }
