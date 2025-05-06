@@ -1,19 +1,16 @@
 package driverPkg
 
 import (
-	
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
-    "github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-    "github.com/flipped-aurora/gin-vue-admin/server/model/driverPkg"
-    driverPkgReq "github.com/flipped-aurora/gin-vue-admin/server/model/driverPkg/request"
-    "github.com/gin-gonic/gin"
-    "go.uber.org/zap"
-    "github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/driverPkg"
+	driverPkgReq "github.com/flipped-aurora/gin-vue-admin/server/model/driverPkg/request"
+	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
-type DriversApi struct {}
-
-
+type DriversApi struct{}
 
 // CreateDrivers 创建drivers表
 // @Tags Drivers
@@ -25,8 +22,8 @@ type DriversApi struct {}
 // @Success 200 {object} response.Response{msg=string} "创建成功"
 // @Router /drivers/createDrivers [post]
 func (driversApi *DriversApi) CreateDrivers(c *gin.Context) {
-    // 创建业务用Context
-    ctx := c.Request.Context()
+	// 创建业务用Context
+	ctx := c.Request.Context()
 
 	var drivers driverPkg.Drivers
 	err := c.ShouldBindJSON(&drivers)
@@ -34,14 +31,14 @@ func (driversApi *DriversApi) CreateDrivers(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-    drivers.CreatedBy = utils.GetUserID(c)
-	err = driversService.CreateDrivers(ctx,&drivers)
+	drivers.CreatedBy = utils.GetUserID(c)
+	err = driversService.CreateDrivers(ctx, &drivers)
 	if err != nil {
-        global.GVA_LOG.Error("创建失败!", zap.Error(err))
-		response.FailWithMessage("创建失败:" + err.Error(), c)
+		global.GVA_LOG.Error("创建失败!", zap.Error(err))
+		response.FailWithMessage("创建失败:"+err.Error(), c)
 		return
 	}
-    response.OkWithMessage("创建成功", c)
+	response.OkWithMessage("创建成功", c)
 }
 
 // DeleteDrivers 删除drivers表
@@ -54,15 +51,15 @@ func (driversApi *DriversApi) CreateDrivers(c *gin.Context) {
 // @Success 200 {object} response.Response{msg=string} "删除成功"
 // @Router /drivers/deleteDrivers [delete]
 func (driversApi *DriversApi) DeleteDrivers(c *gin.Context) {
-    // 创建业务用Context
-    ctx := c.Request.Context()
+	// 创建业务用Context
+	ctx := c.Request.Context()
 
 	ID := c.Query("ID")
-    userID := utils.GetUserID(c)
-	err := driversService.DeleteDrivers(ctx,ID,userID)
+	userID := utils.GetUserID(c)
+	err := driversService.DeleteDrivers(ctx, ID, userID)
 	if err != nil {
-        global.GVA_LOG.Error("删除失败!", zap.Error(err))
-		response.FailWithMessage("删除失败:" + err.Error(), c)
+		global.GVA_LOG.Error("删除失败!", zap.Error(err))
+		response.FailWithMessage("删除失败:"+err.Error(), c)
 		return
 	}
 	response.OkWithMessage("删除成功", c)
@@ -77,15 +74,15 @@ func (driversApi *DriversApi) DeleteDrivers(c *gin.Context) {
 // @Success 200 {object} response.Response{msg=string} "批量删除成功"
 // @Router /drivers/deleteDriversByIds [delete]
 func (driversApi *DriversApi) DeleteDriversByIds(c *gin.Context) {
-    // 创建业务用Context
-    ctx := c.Request.Context()
+	// 创建业务用Context
+	ctx := c.Request.Context()
 
 	IDs := c.QueryArray("IDs[]")
-    userID := utils.GetUserID(c)
-	err := driversService.DeleteDriversByIds(ctx,IDs,userID)
+	userID := utils.GetUserID(c)
+	err := driversService.DeleteDriversByIds(ctx, IDs, userID)
 	if err != nil {
-        global.GVA_LOG.Error("批量删除失败!", zap.Error(err))
-		response.FailWithMessage("批量删除失败:" + err.Error(), c)
+		global.GVA_LOG.Error("批量删除失败!", zap.Error(err))
+		response.FailWithMessage("批量删除失败:"+err.Error(), c)
 		return
 	}
 	response.OkWithMessage("批量删除成功", c)
@@ -101,8 +98,8 @@ func (driversApi *DriversApi) DeleteDriversByIds(c *gin.Context) {
 // @Success 200 {object} response.Response{msg=string} "更新成功"
 // @Router /drivers/updateDrivers [put]
 func (driversApi *DriversApi) UpdateDrivers(c *gin.Context) {
-    // 从ctx获取标准context进行业务行为
-    ctx := c.Request.Context()
+	// 从ctx获取标准context进行业务行为
+	ctx := c.Request.Context()
 
 	var drivers driverPkg.Drivers
 	err := c.ShouldBindJSON(&drivers)
@@ -110,11 +107,11 @@ func (driversApi *DriversApi) UpdateDrivers(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-    drivers.UpdatedBy = utils.GetUserID(c)
-	err = driversService.UpdateDrivers(ctx,drivers)
+	drivers.UpdatedBy = utils.GetUserID(c)
+	err = driversService.UpdateDrivers(ctx, drivers)
 	if err != nil {
-        global.GVA_LOG.Error("更新失败!", zap.Error(err))
-		response.FailWithMessage("更新失败:" + err.Error(), c)
+		global.GVA_LOG.Error("更新失败!", zap.Error(err))
+		response.FailWithMessage("更新失败:"+err.Error(), c)
 		return
 	}
 	response.OkWithMessage("更新成功", c)
@@ -130,18 +127,19 @@ func (driversApi *DriversApi) UpdateDrivers(c *gin.Context) {
 // @Success 200 {object} response.Response{data=driverPkg.Drivers,msg=string} "查询成功"
 // @Router /drivers/findDrivers [get]
 func (driversApi *DriversApi) FindDrivers(c *gin.Context) {
-    // 创建业务用Context
-    ctx := c.Request.Context()
+	// 创建业务用Context
+	ctx := c.Request.Context()
 
 	ID := c.Query("ID")
-	redrivers, err := driversService.GetDrivers(ctx,ID)
+	redrivers, err := driversService.GetDrivers(ctx, ID)
 	if err != nil {
-        global.GVA_LOG.Error("查询失败!", zap.Error(err))
-		response.FailWithMessage("查询失败:" + err.Error(), c)
+		global.GVA_LOG.Error("查询失败!", zap.Error(err))
+		response.FailWithMessage("查询失败:"+err.Error(), c)
 		return
 	}
 	response.OkWithData(redrivers, c)
 }
+
 // GetDriversList 分页获取drivers表列表
 // @Tags Drivers
 // @Summary 分页获取drivers表列表
@@ -152,8 +150,8 @@ func (driversApi *DriversApi) FindDrivers(c *gin.Context) {
 // @Success 200 {object} response.Response{data=response.PageResult,msg=string} "获取成功"
 // @Router /drivers/getDriversList [get]
 func (driversApi *DriversApi) GetDriversList(c *gin.Context) {
-    // 创建业务用Context
-    ctx := c.Request.Context()
+	// 创建业务用Context
+	ctx := c.Request.Context()
 
 	var pageInfo driverPkgReq.DriversSearch
 	err := c.ShouldBindQuery(&pageInfo)
@@ -161,18 +159,18 @@ func (driversApi *DriversApi) GetDriversList(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	list, total, err := driversService.GetDriversInfoList(ctx,pageInfo)
+	list, total, err := driversService.GetDriversInfoList(ctx, pageInfo)
 	if err != nil {
-	    global.GVA_LOG.Error("获取失败!", zap.Error(err))
-        response.FailWithMessage("获取失败:" + err.Error(), c)
-        return
-    }
-    response.OkWithDetailed(response.PageResult{
-        List:     list,
-        Total:    total,
-        Page:     pageInfo.Page,
-        PageSize: pageInfo.PageSize,
-    }, "获取成功", c)
+		global.GVA_LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败:"+err.Error(), c)
+		return
+	}
+	response.OkWithDetailed(response.PageResult{
+		List:     list,
+		Total:    total,
+		Page:     pageInfo.Page,
+		PageSize: pageInfo.PageSize,
+	}, "获取成功", c)
 }
 
 // GetDriversPublic 不需要鉴权的drivers表接口
@@ -183,13 +181,13 @@ func (driversApi *DriversApi) GetDriversList(c *gin.Context) {
 // @Success 200 {object} response.Response{data=object,msg=string} "获取成功"
 // @Router /drivers/getDriversPublic [get]
 func (driversApi *DriversApi) GetDriversPublic(c *gin.Context) {
-    // 创建业务用Context
-    ctx := c.Request.Context()
+	// 创建业务用Context
+	ctx := c.Request.Context()
 
-    // 此接口不需要鉴权
-    // 示例为返回了一个固定的消息接口，一般本接口用于C端服务，需要自己实现业务逻辑
-    driversService.GetDriversPublic(ctx)
-    response.OkWithDetailed(gin.H{
-       "info": "不需要鉴权的drivers表接口信息",
-    }, "获取成功", c)
+	// 此接口不需要鉴权
+	// 示例为返回了一个固定的消息接口，一般本接口用于C端服务，需要自己实现业务逻辑
+	driversService.GetDriversPublic(ctx)
+	response.OkWithDetailed(gin.H{
+		"info": "不需要鉴权的drivers表接口信息",
+	}, "获取成功", c)
 }

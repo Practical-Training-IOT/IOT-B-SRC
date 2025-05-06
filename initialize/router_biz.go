@@ -33,7 +33,7 @@ func initBizRouter(routers ...*gin.RouterGroup) {
 	{
 		driverPkgRouter := router.RouterGroupApp.DriverPkg
 		driverPkgRouter.InitDriversRouter(privateGroup, publicGroup)
-	} // 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
+	}
 	{
 		myDrivePkgRouter := router.RouterGroupApp.MyDrivePkg
 		myDrivePkgRouter.InitMyDriversRouter(privateGroup, publicGroup)
@@ -41,10 +41,19 @@ func initBizRouter(routers ...*gin.RouterGroup) {
 	{
 		resources_iotRouter := router.RouterGroupApp.Resources_iot
 		resources_iotRouter.InitResourcesRouter(privateGroup, publicGroup)
-	} // 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
-	// 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
+	}
 	{
 		rulesRouter := router.RouterGroupApp.Rules
 		rulesRouter.InitRuleInfoRouter(privateGroup, publicGroup)
+	} // 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
+	// 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
+	// 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
+	{
+		sceneRouter := router.RouterGroupApp.Scene
+		sceneRouter.InitScenesRouter(privateGroup, publicGroup)
+	}
+	{
+		aiRouter := router.RouterGroupApp.AI
+		aiRouter.InitScenesRouter(privateGroup, publicGroup)
 	}
 }

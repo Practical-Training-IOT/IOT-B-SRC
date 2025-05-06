@@ -1,26 +1,28 @@
 package v1
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/devicePkg"
-	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/driverPkg"
+	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/ai"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/alertRecordPkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/alertRulePkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/alterLevelPkg"
+	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/devicePkg"
+	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/driverPkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/example"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/myDrivePkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/productPkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/resources"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/resources_iot"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/rules"
+	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/scene"
 	"github.com/flipped-aurora/gin-vue-admin/server/api/v1/system"
 )
 
 var ApiGroupApp = new(ApiGroup)
 
 type ApiGroup struct {
-	DevicePkgApiGroup  devicePkg.ApiGroup
-	DriverPkgApiGroup  driverPkg.ApiGroup
-	MyDrivePkgApiGroup myDrivePkg.ApiGroup
+	DevicePkgApiGroup      devicePkg.ApiGroup
+	DriverPkgApiGroup      driverPkg.ApiGroup
+	MyDrivePkgApiGroup     myDrivePkg.ApiGroup
 	SystemApiGroup         system.ApiGroup
 	ExampleApiGroup        example.ApiGroup
 	ProductPkgApiGroup     productPkg.ApiGroup
@@ -30,4 +32,6 @@ type ApiGroup struct {
 	AlterLevelPkgApiGroup  alterLevelPkg.ApiGroup
 	AlertRulePkgApiGroup   alertRulePkg.ApiGroup
 	RulesApiGroup          rules.ApiGroup
+	SceneApiGroup          scene.ApiGroup
+	AIApiGroup             ai.ApiGroup
 }
