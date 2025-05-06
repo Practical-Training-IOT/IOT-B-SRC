@@ -1,0 +1,20 @@
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:10:04.552	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/gorm.go:77	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:10:04.665	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:60	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:10:05.985	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:109	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:10:05.986	[34minfo[0m	D:/gowork/src/IOT-B-SRC/core/server.go:38	server run success on 	{"address": ":8888"}
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:20:25.998	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/gorm.go:77	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:20:26.093	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:60	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:20:27.199	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:109	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:20:27.199	[34minfo[0m	D:/gowork/src/IOT-B-SRC/core/server.go:38	server run success on 	{"address": ":8888"}
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:23:03.215	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/gorm.go:77	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:23:03.324	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:60	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:23:04.906	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:109	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 08:23:04.906	[34minfo[0m	D:/gowork/src/IOT-B-SRC/core/server.go:38	server run success on 	{"address": ":8888"}
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 09:00:29.139	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/gorm.go:77	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 09:00:29.263	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:60	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 09:00:30.401	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:109	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 09:00:30.402	[34minfo[0m	D:/gowork/src/IOT-B-SRC/core/server.go:38	server run success on 	{"address": ":8888"}
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 21:52:38.318	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/gorm.go:77	register table success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 21:52:38.370	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:60	register swagger handler
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 21:52:38.928	[34minfo[0m	D:/gowork/src/IOT-B-SRC/initialize/router.go:109	router register success
+[github.com/flipped-aurora/gin-vue-admin/server]2025-05-05 21:52:38.929	[34minfo[0m	D:/gowork/src/IOT-B-SRC/core/server.go:38	server run success on 	{"address": ":8888"}

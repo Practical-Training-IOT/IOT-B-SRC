@@ -1,6 +1,7 @@
 package alertRulePkg
 
 import (
+	"fmt"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/alertRulePkg"
 	alertRulePkgReq "github.com/flipped-aurora/gin-vue-admin/server/model/alertRulePkg/request"
@@ -210,9 +211,9 @@ func (alarmsApi *AlarmsApi) GetAllProductList(c *gin.Context) {
 func (alarmsApi *AlarmsApi) GetEquipmentList(c *gin.Context) {
 	// 创建业务用Context
 	ctx := c.Request.Context()
-
 	ID := c.Query("ID")
-	realarms, err := alarmsService.GetEquipment(ctx, ID)
+	fmt.Println(ID)
+	realarms, err := alarmsService.GetEquipment(ctx, "16")
 	if err != nil {
 		global.GVA_LOG.Error("查询失败!", zap.Error(err))
 		response.FailWithMessage("查询失败:"+err.Error(), c)

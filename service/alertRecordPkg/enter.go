@@ -1,3 +1,3 @@
 package alertRecordPkg
 
-type ServiceGroup struct{}
+type ServiceGroup struct{ RecordsService }

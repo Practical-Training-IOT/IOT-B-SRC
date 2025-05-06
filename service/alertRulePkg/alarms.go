@@ -6,6 +6,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/alertRulePkg"
 	alertRulePkgReq "github.com/flipped-aurora/gin-vue-admin/server/model/alertRulePkg/request"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/devicePkg"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/productPkg"
 	"gorm.io/gorm"
 )
@@ -97,12 +98,14 @@ func (alarmsService *AlarmsService) GetProductList(ctx context.Context) (list []
 	db := global.GVA_DB.Model(&productPkg.Products{})
 	var product []productPkg.Products
 	err = db.Find(&product).Error
-	fmt.Println(product)
 	return product, err
 
 }
 
-func (alarmsService *AlarmsService) GetEquipment(ctx context.Context, ID string) (alarms alertRulePkg.Alarms, err error) {
-	err = global.GVA_DB.Where("id = ?", ID).First(&alarms).Error
+func (alarmsService *AlarmsService) GetEquipment(ctx context.Context, ID string) (alarms devicePkg.Devices, err error) {
+	fmt.Println(ID)
+	var p productPkg.Products
+	global.GVA_DB.Where("id = ?", ID).First(&p)
+	err = global.GVA_DB.Where("belonging_products = ?", p.ProductName).First(&alarms).Error
 	return
 }

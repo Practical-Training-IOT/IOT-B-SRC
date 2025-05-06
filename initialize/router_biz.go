@@ -9,6 +9,7 @@ func holder(routers ...*gin.RouterGroup) {
 	_ = routers
 	_ = router.RouterGroupApp
 }
+
 func initBizRouter(routers ...*gin.RouterGroup) {
 	privateGroup := routers[0]
 	publicGroup := routers[1]
@@ -18,12 +19,11 @@ func initBizRouter(routers ...*gin.RouterGroup) {
 		productPkgRouter.InitProductsRouter(privateGroup, publicGroup)
 	}
 	{
-		resources_iotRouter := router.RouterGroupApp.Resources_iot
-		resources_iotRouter.InitResourcesRouter(privateGroup, publicGroup)
-	} // 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
-	// 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
-	{
 		alertRulePkgRouter := router.RouterGroupApp.AlertRulePkg
 		alertRulePkgRouter.InitAlarmsRouter(privateGroup, publicGroup)
+	} // 占位方法，保证文件可以正确加载，避免go空变量检测报错，请勿删除。
+	{
+		alertRecordPkgRouter := router.RouterGroupApp.AlertRecordPkg
+		alertRecordPkgRouter.InitRecordsRouter(privateGroup, publicGroup)
 	}
 }

@@ -5,8 +5,6 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/productPkg"
 	productPkgReq "github.com/flipped-aurora/gin-vue-admin/server/model/productPkg/request"
-	"github.com/google/uuid"
-	"time"
 )
 
 type ProductsService struct{}
@@ -15,11 +13,7 @@ type ProductsService struct{}
 // Author [yourname](https://github.com/yourname)
 func (productsService *ProductsService) CreateProducts(ctx context.Context, products *productPkg.Products) (err error) {
 	newPlatform := "cloud"
-	newCode := "已发布"
-	code := uuid.NewString()
 	products.Platform = &newPlatform
-	products.ProductCode = &code
-	products.ProductStatus = &newCode
 	err = global.GVA_DB.Create(products).Error
 	return err
 }
@@ -81,42 +75,7 @@ func (productsService *ProductsService) GetProductsInfoList(ctx context.Context,
 	}
 
 	err = db.Find(&productss).Error
-
-	var newProductss []productPkg.Products
-
-	for _, v := range productss {
-
-		// 直接格式化到秒
-		newLayout := "2006-01-02 15:04:05"
-		formattedTime := v.CreatedAt.Format(newLayout)
-
-		// 解析格式化后的时间字符串
-		newCreateTime, _ := time.Parse(newLayout, formattedTime)
-
-		newProducts := productPkg.Products{
-			GVA_MODEL: global.GVA_MODEL{
-				ID:        v.ID,
-				CreatedAt: newCreateTime,
-				UpdatedAt: v.UpdatedAt,
-			},
-			Platform:           v.Platform,
-			ProductName:        v.ProductName,
-			Category:           v.Category,
-			SelectCategory:     v.SelectCategory,
-			NodeType:           v.NodeType,
-			GatewayProtocol:    v.GatewayProtocol,
-			DataFormat:         v.DataFormat,
-			NetworkType:        v.NetworkType,
-			Factory:            v.Factory,
-			ProductDescription: v.ProductDescription,
-			ProductCode:        v.ProductCode,
-			ProductStatus:      v.ProductStatus,
-		}
-
-		newProductss = append(newProductss, newProducts)
-	}
-
-	return newProductss, total, err
+	return productss, total, err
 }
 func (productsService *ProductsService) GetProductsPublic(ctx context.Context) {
 	// 此方法为获取数据源定义的数据
