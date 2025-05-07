@@ -20,7 +20,6 @@ func bizModel() error {
 	err = db.AutoMigrate(alertRulePkg.Alarms{}, alertRecordPkg.Records{})
 	err = db.AutoMigrate(productPkg.Products{}, devicePkg.Devices{}, driverPkg.Drivers{}, myDrivePkg.MyDrivers{}, scene.Scenes{})
 	err = db.AutoMigrate(productPkg.Products{}, resources_iot.Resources{}, rules.RuleInfo{}, scene.Scenes{})
-	err = db.AutoMigrate(alertRulePkg.AlertRules{}, alertRecordPkg.Alerts{}, rules.RuleInfo{}, scene.Scenes{})
 	if err != nil {
 		return err
 	}

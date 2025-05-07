@@ -27,5 +27,6 @@ func (s *ScenesRouter) InitScenesRouter(Router *gin.RouterGroup, PublicRouter *g
 		scenesRouterWithoutAuth.POST("scenesSwitchChange", scenesApi.ScenesSwitchChange) // scenes表开放接口
 		scenesRouterWithoutAuth.GET("getScenDevicesList", scenesApi.GetScenDevicesList)  // scenes表开放接口
 		scenesRouterWithoutAuth.GET("getScenFuncList", scenesApi.GetScenFuncList)        // scenes表开放接口
+		scenesRouterWithoutAuth.POST("enterCreateScenes", scenesApi.EnterCreateScenes)   // scenes表开放接口
 	}
 }

@@ -7,6 +7,8 @@ import (
 	rulesReq "github.com/flipped-aurora/gin-vue-admin/server/model/rules/request"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/scene"
 	sceneReq "github.com/flipped-aurora/gin-vue-admin/server/model/scene/request"
+	"strconv"
+	"time"
 )
 
 type ScenesService struct{}
@@ -108,4 +110,55 @@ func (scenesService *ScenesService) GetScenFuncList(ctx context.Context, value s
 		return nil, err
 	}
 	return property, nil
+}
+
+func (scenesService *ScenesService) EnterCreateScenes(ctx context.Context, s *sceneReq.SceneRequest) error {
+	var db = global.GVA_DB.Begin()
+	var times *time.Time
+	var week string
+	if s.TriggerMethod == "TimeTriggered" {
+		for _, w := range s.TriggerWeekdays {
+			week += w + ","
+		}
+		parsedTime, _ := time.Parse("15:04", s.TriggerConfig.Time)
+		times = &parsedTime
+	} else {
+		times = nil
+	}
+	triggerCondition := scene.TriggerCondition{
+		SceneID:           s.ID,
+		TriggerType:       s.TriggerType,
+		Product:           s.Product,
+		Device:            strconv.Itoa(s.Device),
+		Function:          s.Function,
+		ValueType:         s.ValueType,
+		JudgmentCondition: s.JudgeCondition,
+		Time:              times,
+		DaysOfWeek:        week,
+		TriggerMode:       s.TriggerMethod,
+	}
+	err := db.Create(&triggerCondition).Error
+	if err != nil {
+		db.Rollback()
+		return err
+	}
+	var sli []scene.ExecutionAction
+	for _, i := range s.HTTPHeaders {
+		executionAction := scene.ExecutionAction{
+			SceneID:    s.ID,
+			ActionType: i.Key,
+			Product:    i.Product,
+			Device:     strconv.Itoa(i.Device),
+			Function:   i.Function,
+			Value:      i.Value,
+		}
+		sli = append(sli, executionAction)
+	}
+	err = db.Create(&sli).Error
+	if err != nil {
+		db.Rollback()
+		return err
+	}
+	db.Commit()
+	return nil
 }

@@ -10,6 +10,9 @@ type AiRouter struct{}
 func (s *AiRouter) InitScenesRouter(Router *gin.RouterGroup, PublicRouter *gin.RouterGroup) {
 	scenesRouterWithoutAuth := PublicRouter.Group("ai")
 	{
-		scenesRouterWithoutAuth.POST("chat", aiApi.Chats) // scenes表开放接口
+		scenesRouterWithoutAuth.POST("chat", aiApi.Chats)    // scenes表开放接口
+		scenesRouterWithoutAuth.POST("change", aiApi.Change) // scenes表开放接口
+		scenesRouterWithoutAuth.GET("history", aiApi.History)
+		scenesRouterWithoutAuth.POST("oneHistory", aiApi.OneHistory)
 	}
 }

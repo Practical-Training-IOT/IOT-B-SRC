@@ -8,6 +8,7 @@ import (
 	sceneReq "github.com/flipped-aurora/gin-vue-admin/server/model/scene/request"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"net/http"
 )
 
 type ScenesApi struct{}
@@ -228,4 +229,20 @@ func (scenesApi *ScenesApi) GetScenFuncList(c *gin.Context) {
 		return
 	}
 	response.OkWithDetailed(va, "修改成功", c)
+}
+
+func (scenesApi *ScenesApi) EnterCreateScenes(c *gin.Context) {
+	ctx := c.Request.Context()
+	var req sceneReq.SceneRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	err := scenesService.EnterCreateScenes(ctx, &req)
+	if err != nil {
+		global.GVA_LOG.Error("创建失败!", zap.Error(err))
+		response.FailWithMessage("创建失败:"+err.Error(), c)
+		return
+	}
+	response.OkWithMessage("创建成功", c)
 }
