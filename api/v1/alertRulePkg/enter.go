@@ -2,6 +2,6 @@ package alertRulePkg
 
 import "github.com/flipped-aurora/gin-vue-admin/server/service"
 
-type ApiGroup struct{ AlertRulesApi }
+type ApiGroup struct{ AlarmsApi }
 
-var alertRulesService = service.ServiceGroupApp.AlertRulePkgServiceGroup.AlertRulesService
+var alarmsService = service.ServiceGroupApp.AlertRulePkgServiceGroup.AlarmsService
