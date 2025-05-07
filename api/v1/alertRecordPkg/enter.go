@@ -2,6 +2,6 @@ package alertRecordPkg
 
 import "github.com/flipped-aurora/gin-vue-admin/server/service"
 
-type ApiGroup struct{ AlertsApi }
+type ApiGroup struct{ RecordsApi }
 
-var alertsService = service.ServiceGroupApp.AlertRecordPkgServiceGroup.AlertsService
+var recordsService = service.ServiceGroupApp.AlertRecordPkgServiceGroup.RecordsService

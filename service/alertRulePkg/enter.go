@@ -1,3 +1,3 @@
 package alertRulePkg
 
-type ServiceGroup struct{ AlertRulesService }
+type ServiceGroup struct{ AlarmsService }
