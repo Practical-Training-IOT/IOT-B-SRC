@@ -210,6 +210,42 @@ func (productsApi *ProductsApi) GetStandardCategoryList(c *gin.Context) {
 
 }
 
+func (productsApi *ProductsApi) GetPropertyList(c *gin.Context) {
+	categoryName := c.Query("CategoryName")
+	var pageInfo productPkgReq.ProductsSearch
+	err := c.ShouldBindQuery(&pageInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	var category productPkg.Category
+	err = global.GVA_DB.Model(&productPkg.Category{}).Where("category_name = ?", categoryName).First(&category).Error
+	if err != nil {
+		global.GVA_LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败:"+err.Error(), c)
+		return
+	}
+	//获得key
+	key := category.CategoryKey
+	var Property []productPkg.Property
+	var total int64
+	global.GVA_DB.Model(&productPkg.Property{}).Where("category_key = ?", key).Count(&total)
+	err = global.GVA_DB.Model(&productPkg.Property{}).Scopes(Paginate(pageInfo.Page, pageInfo.PageSize)).Where("category_key = ?", key).Find(&Property).Error
+	if err != nil {
+		global.GVA_LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败:"+err.Error(), c)
+		return
+	}
+
+	response.OkWithDetailed(response.PageResult{
+		List:     Property,
+		Total:    total,
+		Page:     pageInfo.Page,
+		PageSize: pageInfo.PageSize,
+	}, "获取成功", c)
+
+}
+
 func Paginate(page int, pageSize int) func(db *gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {
 		if page <= 0 {

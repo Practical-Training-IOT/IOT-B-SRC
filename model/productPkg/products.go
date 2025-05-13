@@ -41,3 +41,21 @@ type Category struct {
 func (Category) TableName() string {
 	return "categories" // 假设你的表名为 categories
 }
+
+// Property represents a row in the properties table.
+type Property struct {
+	ID          string   `gorm:"column:id;primaryKey" json:"id"`
+	CategoryKey string   `gorm:"column:category_key" json:"category_key"`
+	Name        string   `gorm:"column:name" json:"name"`
+	Code        string   `gorm:"column:code" json:"code"`
+	AccessMode  string   `gorm:"column:access_mode" json:"access_mode"`
+	DataType    string   `gorm:"column:data_type" json:"data_type"`
+	Unit        *string  `gorm:"column:unit" json:"unit,omitempty"` // Use pointer to allow NULL values
+	MinValue    *float64 `gorm:"column:min_value" json:"min_value,omitempty"`
+	MaxValue    *float64 `gorm:"column:max_value" json:"max_value,omitempty"`
+}
+
+// TableName returns the table name for the Property model.
+func (Property) TableName() string {
+	return "properties"
+}

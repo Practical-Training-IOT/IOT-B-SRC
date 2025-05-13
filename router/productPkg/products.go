@@ -25,5 +25,6 @@ func (s *ProductsRouter) InitProductsRouter(Router *gin.RouterGroup, PublicRoute
 	{
 		productsRouterWithoutAuth.GET("getProductsPublic", productsApi.GetProductsPublic)             // products表开放接口
 		productsRouterWithoutAuth.GET("getStandardCategoryList", productsApi.GetStandardCategoryList) // products表开放接口
+		productsRouterWithoutAuth.GET("getPropertyList", productsApi.GetPropertyList)                 // products表开放接口
 	}
 }
