@@ -80,7 +80,7 @@ func (productsService *ProductsService) GetProductsInfoList(ctx context.Context,
 		db = db.Limit(limit).Offset(offset)
 	}
 
-	err = db.Find(&productss).Error
+	err = db.Find(&productss).Order("created_at DESC").Error
 
 	var newProductss []productPkg.Products
 
